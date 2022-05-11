@@ -40,3 +40,6 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
     #Address
     sb.execute_script()
     time.sleep(5)
+    #Address
+    sb.execute_script()
+    time.sleep(5)
