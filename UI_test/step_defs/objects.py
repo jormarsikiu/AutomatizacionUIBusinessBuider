@@ -191,3 +191,9 @@ class CreateGroup():
     SelectOpenFatherCode = '''jQuery('#ListParents').select2('open')'''
     SelectFatherCode = '''jQuery('#select2-ListParents-results li').last().trigger({type:'mouseup'})'''
     DeleteGroup = '''document.querySelectorAll("[href*='/Settings/EntityGroup/DeleteGroupFormAsync']")[0].click();'''
+
+class CreateWareHouse():
+    ButtonWarehouse = '''document.querySelectorAll("[href*='/Management/WareHouse']")[0].click();'''
+    ButtonCreateWarehouse = '''document.querySelectorAll("[href*='/Management/Warehouse/Form']")[0].click();'''
+    SelectClientTypeEntityOpen = '''jQuery('#EntityTypeCode').select2('open')'''
+    SelectClientTypeEntity = '''jQuery('#select2-EntityTypeCode-results li').first().trigger({type:'mouseup'})'''
