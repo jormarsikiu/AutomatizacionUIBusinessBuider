@@ -1,13 +1,18 @@
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from pytest_bdd import scenarios, given, when, then, parsers
 from .objects import *
 import time
 from .login import *
 import random
+import os
+
 
 # Scenarios 
 scenarios('../features/createbusinesspartner.feature')
 PartnerCode = random.randint(0,1000)
 
+@pytest.fixture
 @given('Abro el modulo business')
 def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
     sb.is_valid_url("https://test-xweb.eurokaizen.com/dashboard/security/index/MAP-001")
@@ -38,6 +43,7 @@ def completo_los_datos_de_formulario(sb,Name, ShortName,ComercialActivity, TaxCo
     sb.type("#TaxCode", TaxCode)
     time.sleep(5)
     
+    
 @then('añado la Direccion Contabilidad Grupo Condicion comercial')
 def anado_direccion_contabilidad_grupo_direccioncomercial(sb):  
     
@@ -45,17 +51,20 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
     sb.execute_script(CreateBusinessPartner.ButtonAddAddress)
     time.sleep(5)
     sb.execute_script(CreateBusinessPartner.ButtonOpenTypeAddress)
-    time.sleep(3)
+    time.sleep(5)
     sb.execute_script(CreateBusinessPartner.ButtonTypeAddress)
-    time.sleep(3)
+    time.sleep(5)
     sb.execute_script(CreateBusinessPartner.ButtonIsDelivery)
     sb.type("#pac-input", "Caracas")
-    time.sleep(7)
-   # sb.execute_script(CreateBusinessPartner.clickAddress2)
-    #time.sleep(5)
-    #sb.click("div.pac-item")
-    sb.execute_script(Global.Accept)
     time.sleep(2)
+    element = sb.wait_for_element_visible("#pac-input")
+    time.sleep(2)
+    element.send_keys(Keys.ARROW_DOWN)
+    time.sleep(2)
+    element.send_keys(Keys.TAB)
+    time.sleep(5)
+    sb.execute_script(Global.Accept)
+    time.sleep(5)
     
     #Accounting
     sb.execute_script(CreateBusinessPartner.ButtonAccounting)
@@ -147,13 +156,19 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
     #Image
     sb.execute_script(CreateBusinessPartner.ButtonIamage)
     time.sleep(2)
+    '''
     sb.execute_script(CreateBusinessPartner.ButtonAddImage)
     time.sleep(2)
-
+    dir_name = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(dir_name, "example_logs/%s" % "screenshot.png")
+    sb.choose_file('button[class*="dz-button"]', file_path)
+    time.sleep(6)
+    sb.click("#buttonConfirm")
     '''
+    
     #Save
-    #sb.execute_script(Global.SaveAll)
-    #time.sleep(10)
+    sb.execute_script(Global.SaveAll)
+    time.sleep(10)
     
     #Busqueda
     sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/BusinessPartner")
@@ -173,4 +188,4 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
     time.sleep(2)
     sb.execute_script(CreateBusinessPartner.EditIBP)
     time.sleep(8)
-    '''
+    
