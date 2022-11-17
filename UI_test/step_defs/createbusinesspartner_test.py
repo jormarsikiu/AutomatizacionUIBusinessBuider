@@ -18,7 +18,7 @@ def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
     sb.is_valid_url("https://test-xweb.eurokaizen.com/dashboard/security/index/MAP-001")
     sb.execute_script(Global.ButtonBusiness)
     time.sleep(1)
-
+#checar el flujo actual de business partner
 @given('presiono el boton business partner')
 def presiono_el_boton_business_partenr(sb):  
     sb.execute_script(CreateBusinessPartner.ButtonBusinessPartner)

@@ -9,7 +9,7 @@ class Global():
     #Menu
     ButtonBusiness = '''document.querySelectorAll("[href*='/dashboard/Business/index/MAP-003']")[0].click();'''
     ButtonSales = '''document.querySelectorAll("[href*='/dashboard/sales/SalesPanel/SAL-002']")[0].click();'''
-    ButtonTransactions = '''document.querySelectorAll("[href*='/documents/transactions']")[0].click();'''
+    ButtonTransactions = '''window.location.href='https://test-xweb.eurokaizen.com/documents/transactions';'''
     #Search
     Search = '''document.querySelector('.col-11').click();'''
     FieldOpen = '''jQuery('#Field').select2('open')'''
@@ -33,7 +33,8 @@ class CreateUser():
     ButtonMenuUserNext = '''document.querySelectorAll('[href*="#next"]')[0].click();'''
 
 class CreateBusinessPartner():
-    ButtonBusinessPartner = '''document.querySelectorAll("[href*='/Management/BusinessPartner']")[0].click();'''
+    ButtonBusinessPartner = '''window.location.href='/Management/BusinessPartner';'''
+              #checar boton '''document.querySelectorAll("[href*='/Management/BusinessPartner']")[0].click();'''
     ButtonBusinessPartnerCreate = '''document.querySelectorAll("[href*='/Management/BusinessPartner/Form']")[0].click();'''
     SelectClientTypeOpen= '''jQuery('#EntityTypeCode').select2('open')'''
     SelectClientType= '''jQuery('#select2-EntityTypeCode-results li').first().trigger({type:'mouseup'})'''
@@ -104,7 +105,7 @@ class CreateSurvey():
     ButtonSaveSurvey = '''document.querySelector('button[onclick="new CreateSurvey().saveSurvey();"]').click();'''
 
 class CreateItem():
-    ButtonItem = '''document.querySelectorAll("[href*='/Management/Item']")[0].click();'''
+    ButtonItem = '''window.location.href='/Management/Item';'''
     ButtonItemCreate = '''document.querySelectorAll("[href*='/Management/Item/_ItemForm']")[0].click();'''
     SelectOpenType = '''jQuery('#EntityTypeCode').select2('open')'''
     SelectTypeProduct = '''jQuery('#select2-EntityTypeCode-results li').eq(1).trigger({type:'mouseup'})'''
