@@ -4,6 +4,14 @@ from objects.global_variables import Page
 import time
 from .login import *
 import random
+import os
+import shutil
+
+#Carpeta para fotos
+dir = 'screenshot/item'
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)
 
 PAGE = Page
 
@@ -14,9 +22,17 @@ ItemCode = random.randint(0,1000)
 
 @given('Abro el modulo business')
 def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/dashboard/security/index/MAP-001")
-    sb.execute_script(Global.ButtonBusiness)
-    time.sleep(3)
+    try:
+        sb.get(PAGE)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "dashboard/security/index/MAP-001" in getURL)
+        sb.execute_script(Global.ButtonBusiness)
+        time.sleep(3)
+    except:
+        sb.save_screenshot('screenshot/Item/Abro el modulo business.png')
+        raise Exception("Error: Abro modulo business")
+
+
 
 @given('presiono el boton items')
 def presiono_el_boton_item(sb):  

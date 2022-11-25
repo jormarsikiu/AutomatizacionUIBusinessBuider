@@ -7,6 +7,13 @@ import time
 from .login import *
 import random
 import os
+import shutil
+
+#Carpeta para fotos
+dir = 'screenshot/businesspartner'
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)
 
 PAGE = Page
 
@@ -28,13 +35,16 @@ def presiono_el_boton_business_partenr(sb):
     sb.is_valid_url(PAGE + "/Management/BusinessPartner")
     time.sleep(3)
 
-@when('presiono el boton de crear - business partner')
+
+@when('presiono el boton de crear un business partner')
 def presiono_el_boton_crear_business_partenr(sb):  
     sb.execute_script(CreateBusinessPartner.ButtonBusinessPartnerCreate)
     sb.is_valid_url(PAGE + "/Management/BusinessPartner/Form")
     time.sleep(3)
 
+
 @when(parsers.parse('completo los datos del formulario de cliente {Name} {ShortName} {ComercialActivity} {TaxCode}'))
+@when(parsers.parse('cambio los datos del formulario de cliente {Name} {ShortName} {ComercialActivity} {TaxCode}'))
 def completo_los_datos_de_formulario(sb,Name, ShortName,ComercialActivity, TaxCode):
     sb.is_valid_url(PAGE + "/Management/BusinessPartner/Form")
     sb.execute_script(CreateBusinessPartner.SelectClientTypeOpen)
@@ -170,39 +180,35 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
     '''
     
     #Save
+@then('guardo formulario')
+def guardo_formulario (sb):
     sb.execute_script(Global.SaveAll)
     time.sleep(10)
     
     #Busqueda       
-@then('busco el partner code')
+@when('busco y presiono el boton de editar un business partner')
 def busco_el_partner_code (sb): 
-    sb.is_valid_url(PAGE + "/Management/BusinessPartner")
-    sb.execute_script(Global.Search)
-    time.sleep(2)
-    sb.execute_script(Global.FieldOpen)
-    time.sleep(2)
-    sb.execute_script(Global.FieldCode)
-    time.sleep(2)
-    sb.execute_script(Global.FieldOpenCondition)
-    time.sleep(2)
-    sb.execute_script(Global.FieldCondition)
-    time.sleep(2)
-    sb.type('[name*="Value"]', PartnerCode)
-    time.sleep(2)
-    sb.click("#btnSearchPanel")
-    time.sleep(2)
-
-#Edit    
-@then('presiono el boton de editar')
-def presiono_el_boton_de_editar(sb): 
-    sb.execute_script(CreateBusinessPartner.EditIBP)
-    time.sleep(8)
-    
-@when(parsers.parse('cambio el campo {Name}'))
-def cambio_el_campo(sb,Name):
-    sb.type("#Name", Name) 
-    
-    #Save
-    sb.execute_script(Global.SaveAll)
-    time.sleep(10)
-    
+    try:
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "Management/BusinessPartner" in getURL)
+        sb.execute_script(Global.Search)
+        time.sleep(2)
+        sb.execute_script(Global.FieldOpen)
+        time.sleep(2)
+        sb.execute_script(Global.FieldCode)
+        time.sleep(2)
+        sb.execute_script(Global.FieldOpenCondition)
+        time.sleep(2)
+        sb.execute_script(Global.FieldCondition)
+        time.sleep(2)
+        sb.type('[name*="Value"]', PartnerCode)
+        time.sleep(2)
+        sb.execute_script(Global.AcceptSearch)
+        time.sleep(2)
+        sb.click("#btnSearchPanel")
+        time.sleep(2)
+        sb.execute_script(CreateBusinessPartner.EditIBP)
+        time.sleep(8)
+    except:
+        sb.save_screenshot('screenshot/businesspartner/busco y presiono el boton de editar un business partner.png')
+        raise Exception("Error: busco y presiono el boton de editar un business partner")
