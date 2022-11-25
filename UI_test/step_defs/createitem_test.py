@@ -1,8 +1,11 @@
 from pytest_bdd import scenarios, given, when, then, parsers
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import time
 from .login import *
 import random
+
+PAGE = Page
 
 # Scenarios 
 scenarios('../features/createitem.feature')
@@ -31,12 +34,11 @@ def presiono_el_boton_crear_business_partenr(sb):
 @when(parsers.parse('completo los datos del formulario de cliente {Tipo} {Nombre} {NombreCorto} {SKU} {PrecioVenta} {PrecioCosto} {PuntoPedido} {PrecioDescuento} {Capacidad} {Unidad}'))
 def completar_los_datos_de_formulario(sb,Tipo,Nombre, NombreCorto,SKU, PrecioVenta, PrecioCosto, PuntoPedido, PrecioDescuento, Capacidad, Unidad):
     sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/Item/_ItemForm")
-    if (Tipo == "Product"):    
-        time.sleep(3)
+    Tipo0 = str(Tipo)
+    if (Tipo0 == "Product"):    
         sb.execute_script(CreateItem.SelectOpenType)
-        time.sleep(3)
         sb.execute_script(CreateItem.SelectTypeProduct)
-    elif(Tipo == "Service"):
+    elif(Tipo0 == "Service"):
         sb.execute_script(CreateItem.SelectOpenType)
         sb.execute_script(CreateItem.SelectTypeService)
     sb.type("#ItemCode", ItemCode)

@@ -1,7 +1,7 @@
 @createitem
 Feature: CreateItem  
   
-  Scenario: Crear un Producto y Servicio
+  Scenario Outline: Crear un Producto y Servicio
     Given Abro el modulo business
     And presiono el boton items
     When presiono el boton de crear item

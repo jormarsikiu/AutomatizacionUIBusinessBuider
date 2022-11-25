@@ -1,39 +1,42 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from pytest_bdd import scenarios, given, when, then, parsers
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import time
 from .login import *
 import random
 import os
 
+PAGE = Page
 
 # Scenarios 
-scenarios('../features/createbusinesspartner.feature')
+scenarios('../features/businesspartner.feature')
 PartnerCode = random.randint(0,1000)
 
 @pytest.fixture
 @given('Abro el modulo business')
 def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/dashboard/security/index/MAP-001")
+    sb.is_valid_url(PAGE + "/dashboard/security/index/MAP-001")
     sb.execute_script(Global.ButtonBusiness)
     time.sleep(1)
+    
 #checar el flujo actual de business partner
 @given('presiono el boton business partner')
 def presiono_el_boton_business_partenr(sb):  
     sb.execute_script(CreateBusinessPartner.ButtonBusinessPartner)
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/BusinessPartner")
+    sb.is_valid_url(PAGE + "/Management/BusinessPartner")
     time.sleep(3)
 
-@when('presiono el boton de crear business partner')
+@when('presiono el boton de crear - business partner')
 def presiono_el_boton_crear_business_partenr(sb):  
     sb.execute_script(CreateBusinessPartner.ButtonBusinessPartnerCreate)
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/BusinessPartner/Form")
+    sb.is_valid_url(PAGE + "/Management/BusinessPartner/Form")
     time.sleep(3)
 
 @when(parsers.parse('completo los datos del formulario de cliente {Name} {ShortName} {ComercialActivity} {TaxCode}'))
 def completo_los_datos_de_formulario(sb,Name, ShortName,ComercialActivity, TaxCode):
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/BusinessPartner/Form")
+    sb.is_valid_url(PAGE + "/Management/BusinessPartner/Form")
     sb.execute_script(CreateBusinessPartner.SelectClientTypeOpen)
     sb.execute_script(CreateBusinessPartner.SelectClientType)
     sb.type("#PartnerCode", PartnerCode)
@@ -170,8 +173,10 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
     sb.execute_script(Global.SaveAll)
     time.sleep(10)
     
-    #Busqueda
-    sb.is_valid_url("https://test-xweb.eurokaizen.com/Management/BusinessPartner")
+    #Busqueda       
+@then('busco el partner code')
+def busco_el_partner_code (sb): 
+    sb.is_valid_url(PAGE + "/Management/BusinessPartner")
     sb.execute_script(Global.Search)
     time.sleep(2)
     sb.execute_script(Global.FieldOpen)
@@ -186,6 +191,18 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
     time.sleep(2)
     sb.click("#btnSearchPanel")
     time.sleep(2)
+
+#Edit    
+@then('presiono el boton de editar')
+def presiono_el_boton_de_editar(sb): 
     sb.execute_script(CreateBusinessPartner.EditIBP)
     time.sleep(8)
+    
+@when(parsers.parse('cambio el campo {Name}'))
+def cambio_el_campo(sb,Name):
+    sb.type("#Name", Name) 
+    
+    #Save
+    sb.execute_script(Global.SaveAll)
+    time.sleep(10)
     

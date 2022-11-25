@@ -1,7 +1,10 @@
 from pytest_bdd import scenarios, given, when, then, parsers
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import time
 from .login import *
+
+PAGE = Page
 
 # Scenarios 
 scenarios('../features/createinvoice.feature')

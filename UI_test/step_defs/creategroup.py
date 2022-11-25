@@ -1,8 +1,11 @@
 from pytest_bdd import scenarios, given, when, then, parsers
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import time
 from .login import *
 import random
+
+PAGE = Page
 
 # Scenarios 
 scenarios('../features/creategroup.feature')

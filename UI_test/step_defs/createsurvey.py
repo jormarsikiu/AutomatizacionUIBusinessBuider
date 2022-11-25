@@ -1,7 +1,10 @@
 from pytest_bdd import scenarios, given, when, then, parsers
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import time
 from .login import *
+
+PAGE = Page
 
 # Scenarios 
 scenarios('../features/createsurvey.feature')
@@ -27,6 +30,7 @@ def selecciono_tipo_y_estatus(sb,Tipo,Estatus):
     sb.is_valid_url("https://test-xweb.eurokaizen.com/HumanTalent/Survey/CreateSurvey")
     time.sleep(5)
     sb.execute_script(CreateSurvey.SelectOpenType)
+    time.sleep(8)
     if Tipo == '360-Survey' and Estatus == 'Open' :
         sb.execute_script(CreateSurvey.Select360Survey)
         sb.execute_script(CreateSurvey.SelectStatus)

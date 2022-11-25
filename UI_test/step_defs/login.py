@@ -1,8 +1,9 @@
-from .objects import *
+from objects.paths import *
+from objects.global_variables import Page
 import pytest
 import time
 
-PAGE = 'https://test-xweb.eurokaizen.com'
+PAGE = Page
 
 @pytest.fixture
 def login_con_cookies_usuario_y_contrasena(sb):
