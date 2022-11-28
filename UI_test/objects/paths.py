@@ -84,6 +84,8 @@ class CreateBusinessPartner():
     ButtonIamage= '''document.querySelectorAll("[href*='#tab9']")[0].click();'''
     ButtonAddImage = '''document.querySelectorAll("[href*='/Management/BusinessPartner/_ImageItem']")[0].click();'''
     EditIBP = '''document.querySelectorAll("[href*='/Management/BusinessPartner/Edit']")[0].click();'''
+    DeleteBP = '''document.querySelectorAll("[href*='/Management/BusinessPartner/Delete']")[0].click();'''
+    ModalDeleteBP = '''document.querySelectorAll(".btn.btn-outline-success")[0].click();'''
 
     
 class CreateSurvey():

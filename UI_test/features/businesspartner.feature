@@ -13,7 +13,6 @@ Feature: BusinessPartner
     Examples: businesspartnerinfo
     |Name   | ShortName  | ComercialActivity | TaxCode |
     |UITest | Pytest     | Test              | T3ts    |
-
   
   Scenario Outline: Editar un Business Partner
     Given Abro el modulo business
@@ -22,6 +21,11 @@ Feature: BusinessPartner
     And cambio los datos del formulario de cliente <Name> <ShortName> <ComercialActivity> <TaxCode>
     Then guardo formulario
 
-     Examples: businesspartnerinfo
+    Examples: businesspartnerinfo
     |Name        | ShortName       | ComercialActivity      | TaxCode      |
     |UITest-edit | Pytest-edit     | Test-edit              | T3ts-edit    |
+
+ Scenario Outline: Eliminar un Business Partner
+    Given Abro el modulo business
+    And presiono el boton business partner
+    When busco y presiono el boton de Eliminar un business partner

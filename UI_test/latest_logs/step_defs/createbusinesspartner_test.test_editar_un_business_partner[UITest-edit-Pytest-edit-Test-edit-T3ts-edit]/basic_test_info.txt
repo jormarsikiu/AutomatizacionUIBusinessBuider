@@ -1,0 +1,91 @@
+step_defs/createbusinesspartner_test.py::py::test_editar_un_business_partner[UITest-edit-Pytest-edit-Test-edit-T3ts-edit]
+--------------------------------------------------------------------
+Last Page: [WARNING! Browser Not Open!]
+  Browser: chrome (107.0.5304.107)
+   Driver: chromedriver (106.0.5249.61)
+Timestamp: 1669670618  (Unix Timestamp)
+     Date: Monday, November 28, 2022
+     Time: 5:23:38 PM  (Hora estándar de Venezuela, UTC-04:00)
+--------------------------------------------------------------------
+Traceback:   File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\python.py", line 1761, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_callers.py", line 60, in _multicall
+    return outcome.get_result()
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_result.py", line 60, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\python.py", line 192, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pytest_bdd\scenario.py", line 174, in scenario_wrapper
+    _execute_scenario(feature, scenario, request)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pytest_bdd\scenario.py", line 144, in _execute_scenario
+    _execute_step_function(request, scenario, step, step_func)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pytest_bdd\scenario.py", line 108, in _execute_step_function
+    kwargs = {arg: request.getfixturevalue(arg) for arg in get_args(step_func)}
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pytest_bdd\scenario.py", line 108, in <dictcomp>
+    kwargs = {arg: request.getfixturevalue(arg) for arg in get_args(step_func)}
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 554, in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 573, in _get_active_fixturedef
+    self._compute_fixture_value(fixturedef)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 659, in _compute_fixture_value
+    fixturedef.execute(request=subrequest)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 1057, in execute
+    result = ihook.pytest_fixture_setup(fixturedef=self, request=request)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_callers.py", line 60, in _multicall
+    return outcome.get_result()
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_result.py", line 60, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\pluggy\_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 1111, in pytest_fixture_setup
+    result = call_fixture_func(fixturefunc, request, kwargs)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\fixtures.py", line 890, in call_fixture_func
+    fixture_result = fixturefunc(**kwargs)
+  File "C:\Users\kaizen\Desktop\pytestbb\AutomatizacionUIBusinessBuilder\UI_test\step_defs\login.py", line 12, in login_con_cookies_usuario_y_contrasena
+    sb.get(PAGE)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\seleniumbase\fixtures\base_case.py", line 200, in get
+    self.open(url)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\seleniumbase\fixtures\base_case.py", line 185, in open
+    if self.driver.current_url == pre_action_url and pre_action_url != url:
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 915, in current_url
+    return self.execute(Command.GET_CURRENT_URL)['value']
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 425, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\kaizen\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+Exception: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=107.0.5304.107)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00BD1ED3+2236115]
+	Ordinal0 [0x00B692F1+1807089]
+	Ordinal0 [0x00A766FD+812797]
+	Ordinal0 [0x00A5DFFA+712698]
+	Ordinal0 [0x00AC506B+1134699]
+	Ordinal0 [0x00AD514A+1200458]
+	Ordinal0 [0x00AC18A6+1120422]
+	Ordinal0 [0x00A9A73D+960317]
+	Ordinal0 [0x00A9B71F+964383]
+	GetHandleVerifier [0x00E7E7E2+2743074]
+	GetHandleVerifier [0x00E708D4+2685972]
+	GetHandleVerifier [0x00C62BAA+532202]
+	GetHandleVerifier [0x00C61990+527568]
+	Ordinal0 [0x00B7080C+1837068]
+	Ordinal0 [0x00B74CD8+1854680]
+	Ordinal0 [0x00B74DC5+1854917]
+	Ordinal0 [0x00B7ED64+1895780]
+	BaseThreadInitThunk [0x7713FEF9+25]
+	RtlGetAppContainerNamedObjectPath [0x77C07BBE+286]
+	RtlGetAppContainerNamedObjectPath [0x77C07B8E+238]
