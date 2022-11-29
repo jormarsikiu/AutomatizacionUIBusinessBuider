@@ -291,7 +291,7 @@ def busco_el_partner_code_y_elimino (sb):
         time.sleep(2)
         sb.execute_script(Global.FieldCondition)
         time.sleep(2)
-        sb.type('[name*="Value"]', '920' )
+        sb.type('[name*="Value"]', PartnerCode )
         time.sleep(2)
         sb.execute_script(Global.AcceptSearch)
         time.sleep(5)
