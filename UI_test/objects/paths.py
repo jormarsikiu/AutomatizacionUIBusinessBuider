@@ -107,7 +107,7 @@ class CreateSurvey():
     ButtonSaveSurvey = '''document.querySelector('button[onclick="new CreateSurvey().saveSurvey();"]').click();'''
 
 class CreateItem():
-    ButtonItem = '''window.location.href='/Management/Item';'''
+    ButtonItem = '''document.querySelectorAll("[href*='/Management/Item']")[0].click();'''
     ButtonItemCreate = '''document.querySelectorAll("[href*='/Management/Item/_ItemForm']")[0].click();'''
     SelectOpenType = '''jQuery('#EntityTypeCode').select2('open')'''
     SelectTypeProduct = '''jQuery('#select2-EntityTypeCode-results li').eq(1).trigger({type:'mouseup'})'''
@@ -148,6 +148,10 @@ class CreateItem():
     SelectWarehouse= '''jQuery('#select2-selectWarehouse-results li').first().trigger({type:'mouseup'})'''
     #Index
     EditItem = '''document.querySelectorAll("[href*='/Management/Item/EditItem']")[0].click();'''
+    #Delete
+    DeleteItem = '''document.querySelectorAll("[href*='/Management/Item/Delete']")[0].click();'''
+    ModalDeleteItem = '''document.querySelectorAll(".btn.btn-outline-success")[0].click();'''
+
     
 class CreateDraft():
     ButtonCreate =  '''document.querySelectorAll("[href*='/Documents/Transactions/CreateDraftFormAsync']")[0].click();'''

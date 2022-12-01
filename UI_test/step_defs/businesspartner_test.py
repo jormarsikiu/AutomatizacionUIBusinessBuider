@@ -25,6 +25,7 @@ PartnerCode = random.randint(0,1000)
 @given('Abro el modulo business')
 def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
     try:
+        sb.get(PAGE)
         getURL = sb.get_current_url()
         sb.assert_true( PAGE + "dashboard/security/index/" in getURL)
         sb.execute_script(Global.ButtonBusiness)
