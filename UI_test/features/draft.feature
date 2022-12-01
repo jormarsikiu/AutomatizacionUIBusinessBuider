@@ -1,10 +1,10 @@
-@createorder
-Feature: CreateOrder
+@draft
+Feature: Draft
   
-  Scenario: Crear un Pedido
+  Scenario: Crear un Borrador
     Given Abro el módulo de Sales
     And presiono el boton Transactions 
-    When presiono el boton Pedido y luego el boton Crear
+    When presiono el boton Crear
     And selecciono FechaCreacion FechaVencimiento Cliente Proveedor
     Then selecciono los productos
-    And guardo y busco el pedido en el index
+    And guardo y busco el borrador en el index

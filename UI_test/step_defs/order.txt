@@ -1,0 +1,116 @@
+from pytest_bdd import scenarios, given, when, then, parsers
+from objects.paths import *
+from objects.global_variables import Page
+import time
+from .login import *
+import os
+import shutil
+
+#Carpeta para fotos
+dir = 'screenshot/Order'
+if os.path.exists(dir):
+    shutil.rmtree(dir)
+os.makedirs(dir)
+
+PAGE = Page
+
+# Scenarios 
+scenarios('../features/order.feature')
+OrderCode = ""
+
+@given('Abro el módulo de Sales')
+def abro_el_modulo_de_sales(sb, login_con_cookies_usuario_y_contrasena):
+    try:
+        sb.get(PAGE)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "dashboard/security/index/" in getURL)
+        sb.execute_script(Global.ButtonSales)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "dashboard/sales/SalesPanel/SAL-002" in getURL)
+        time.sleep(3)
+    except:
+        sb.save_screenshot('screenshot/Order/Abro el módulo de Sales.png')
+        raise Exception("Error: Abro el módulo de Sales")
+
+@given('presiono el boton Transactions')
+def presiono_el_boton_transactions(sb):
+    try:
+        sb.execute_script(Global.ButtonTransactions)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "documents/transactions" in getURL)
+        time.sleep(3)
+    except:
+        sb.save_screenshot('screenshot/Order/presiono el boton Transactions.png')
+        raise Exception("Error: presiono el boton Transactions")
+
+@when('presiono el boton Pedido y luego el boton Crear')
+def presiono_el_boton_crear_draft(sb):
+    try:
+        sb.execute_script(CreateOrder.TapOrder)
+        time.sleep(2)
+        sb.execute_script(CreateOrder.ButtonCreate)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "Documents/Transactions/CreateOrderFormAsync" in getURL)
+        time.sleep(5)
+    except:
+        sb.save_screenshot('screenshot/Order/Abro el módulo de Sales.png')
+        raise Exception("Error: Abro el módulo de Sales")
+
+@when('selecciono FechaCreacion FechaVencimiento Cliente Proveedor')
+def selecciono_fechas_cliente_proveedor(sb):
+    try:
+        OrderCode = sb.execute_script(CreateOrder.GetOrderCode)
+        sb.click("#OrderDate")
+        sb.execute_script(Global.SelectOKDate)
+        time.sleep(2)
+        sb.click("#OrderDateDue")
+        sb.execute_script(Global.SelectOKDate2)
+        time.sleep(2)
+        sb.execute_script(CreateDraft.SelectOpenClientName)
+        sb.execute_script(CreateDraft.SelectOpenClientAddress)
+        time.sleep(2)
+        sb.execute_script(CreateDraft.SelectOpenProviderName)
+        sb.execute_script(CreateDraft.SelectOpenProviderAddress)
+        time.sleep(2)
+    except:
+        sb.save_screenshot('screenshot/Order/selecciono FechaCreacion FechaVencimiento Cliente Proveedor.png')
+        raise Exception("Error: selecciono FechaCreacion FechaVencimiento Cliente Proveedor")
+
+@then('selecciono los productos')
+def selecciono_productos(sb):  
+    try:
+        sb.execute_script(CreateDraft.ButtonAddItem)
+        time.sleep(2)
+    except:
+        sb.save_screenshot('screenshot/Order/selecciono los productos.png')
+        raise Exception("Error: selecciono los productos")
+    
+@then('guardo y busco el pedido en el index')
+def guardo_busco_en_el_index(sb):  
+    try:
+        sb.execute_script(CreateDraft.SaveAll)
+        time.sleep(10)
+    
+        #Busqueda
+        sb.is_valid_url("https://test-xweb.eurokaizen.com/documents/transactions")
+        sb.execute_script(CreateOrder.TapOrder)
+        sb.execute_script(Global.Search)
+        time.sleep(2)
+        sb.execute_script(Global.FieldOpen)
+        time.sleep(2)
+        sb.execute_script(Global.FieldCode)
+        time.sleep(2)
+        sb.execute_script(Global.FieldOpenCondition)
+        time.sleep(2)
+        sb.execute_script(Global.FieldCondition)
+        time.sleep(2)
+        sb.type('[name*="Value"]', OrderCode)
+        time.sleep(2)
+        sb.click("#btnSearchPanel")
+        time.sleep(2)
+        sb.execute_script(CreateItem.EditItem)
+        time.sleep(8)
+    except:
+        sb.save_screenshot('screenshot/Order/guardo y busco el pedido en el index.png')
+        raise Exception("Error: guardo y busco el pedido en el index")
+ 

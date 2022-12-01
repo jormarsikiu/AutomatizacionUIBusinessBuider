@@ -1,5 +1,5 @@
-@createwarehouse
-Feature: CreateWarehouse
+@warehouse
+Feature: Warehouse
   
   Scenario: Crear un Almacen
     Given Abro el modulo business
