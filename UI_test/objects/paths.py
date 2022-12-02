@@ -204,3 +204,28 @@ class CreateWareHouse():
     ButtonCreateWarehouse = '''document.querySelectorAll("[href*='/Management/Warehouse/Form']")[0].click();'''
     SelectClientTypeEntityOpen = '''jQuery('#EntityTypeCode').select2('open')'''
     SelectClientTypeEntity = '''jQuery('#select2-EntityTypeCode-results li').first().trigger({type:'mouseup'})'''
+    #Address
+    ButtonAddAddress = '''document.querySelectorAll("[href*='Management/Warehouse/_AddressGeolocation']")[0].click();'''
+    ButtonOpenTypeAddress = '''jQuery('#AddressEntityTypeCode').select2('open')'''
+    ButtonTypeAddress = '''jQuery('#select2-AddressEntityTypeCode-results li').first().trigger({type:'mouseup'})'''
+    ButtonIsDelivery = '''document.querySelectorAll("#IsDefaultDelivery")[0].click();'''
+    #Groups
+    ButtonTapGroup = '''document.querySelectorAll("[href*='#tab3']")[0].click();'''
+    ButtonAddBPGroup = '''document.querySelectorAll("[href*='/Management/Warehouse/_EntityGroups']")[0].click();'''
+    SelectOpenGroup = '''jQuery('#selectParentGroups').select2('open')'''
+    SelectParentGroup= '''jQuery('#select2-selectParentGroups-results li').first().trigger({type:'mouseup'})'''
+    SelectOpenChildGroup = '''jQuery('#selectChildrenGroups').select2('open')'''
+    SelectChildGroup= '''jQuery('#select2-selectChildrenGroups-results li').first().trigger({type:'mouseup'})'''
+    #Business Condition
+    ButtonBussCond = '''document.querySelectorAll("[href*='#tab4']")[0].click();'''
+    SelectOpenBussCond = '''jQuery('#selectBusinessCondition').select2('open')'''
+    SelectBussCond= '''jQuery('#select2-selectBusinessCondition-results li').first().trigger({type:'mouseup'})'''
+    #Attributes
+    ButtonAttributes = '''document.querySelectorAll("[href*='#tab5']")[0].click();'''
+    SelectOpenAttributes = '''jQuery('#selectAttributes').select2('open')'''
+    SelectAttributes= '''jQuery('#select2-selectAttributes-results li').first().trigger({type:'mouseup'})'''
+    EditWarehouse = '''document.querySelectorAll("[href*='/Management/Warehouse/Edit']")[0].click();'''
+    #Delete
+    DeleteWarehouse = '''document.querySelectorAll("[href*='/Management/Warehouse/Delete']")[0].click();'''
+    ModalDeleteWarehouse = '''document.querySelectorAll(".btn.btn-outline-success")[0].click();'''
+    
