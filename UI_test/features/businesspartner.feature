@@ -1,7 +1,7 @@
 @businesspartner
 Feature: BusinessPartner  
   
-  Scenario Outline: Crear un Business Partner
+  Scenario Outline: Crear un Business Partner-
     Given Abro el modulo business
     And presiono el boton business partner
     When presiono el boton de crear un business partner

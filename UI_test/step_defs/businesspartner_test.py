@@ -10,7 +10,7 @@ import os
 import shutil
 
 #Carpeta para fotos
-dir = 'screenshot/businesspartner'
+dir = 'screenshot/BusinessPartner'
 if os.path.exists(dir):
     shutil.rmtree(dir)
 os.makedirs(dir)
@@ -31,7 +31,7 @@ def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
         sb.execute_script(Global.ButtonBusiness)
         time.sleep(1)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Abro el modulo business.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Abro el modulo business.png')
         raise Exception("Abro el modulo business")
 
     
@@ -45,7 +45,7 @@ def presiono_el_boton_business_partenr(sb):
         sb.assert_true( PAGE + "Management/BusinessPartner" in getURL)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/businesspartner/presiono el boton business partner.png')
+        sb.save_screenshot('screenshot/BusinessPartner/presiono el boton business partner.png')
         raise Exception("Error: presiono el boton business partner")    
     
 
@@ -58,7 +58,7 @@ def presiono_el_boton_crear_business_partenr(sb):
         sb.assert_true( PAGE + "Management/BusinessPartner/Form" in getURL)
         time.sleep(3)
     except:
-        sb.save_screenshot('screenshot/businesspartner/presiono el boton de crear un business partner.png')
+        sb.save_screenshot('screenshot/BusinessPartner/presiono el boton de crear un business partner.png')
         raise Exception("Error: presiono el boton de crear un business partner")
 
 
@@ -77,7 +77,7 @@ def completo_los_datos_de_formulario(sb,Name, ShortName,ComercialActivity, TaxCo
         sb.type("#TaxCode", TaxCode)
         time.sleep(5)
     except:
-        sb.save_screenshot('screenshot/businesspartner/completo los datos del formulario de cliente.png')
+        sb.save_screenshot('screenshot/BusinessPartner/completo los datos del formulario de cliente.png')
         raise Exception("Error: completo los datos del formulario de cliente")
     
     
@@ -103,7 +103,7 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(Global.Accept)
         time.sleep(5)
     except:
-        sb.save_screenshot('screenshot/businesspartner/añado la Direccion Contabilidad Grupo Condicion comercial.png')
+        sb.save_screenshot('screenshot/BusinessPartner/añado la Direccion Contabilidad Grupo Condicion comercial.png')
         raise Exception("Error: añado la Direccion Contabilidad Grupo Condicion comercial")
     
     try:    
@@ -123,7 +123,7 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(Global.Accept)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Accounting.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Accounting.png')
         raise Exception("Error: Accounting")
 
     try:
@@ -143,7 +143,7 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(Global.Accept)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Groups.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Groups.png')
         raise Exception("Error: Groups")
 
     try:
@@ -155,7 +155,7 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(CreateBusinessPartner.SelectBussCond)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Business Condition.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Business Condition.png')
         raise Exception("Error: Business Condition")
     
     
@@ -170,7 +170,7 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
         sb.execute_script(CreateBusinessPartner.SelectTax)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/añado el Impuesto Atributos Equipos Contacto Imagen.png')
+        sb.save_screenshot('screenshot/BusinessPartner/añado el Impuesto Atributos Equipos Contacto Imagen.png')
         raise Exception("Error: añado el Impuesto Atributos Equipos Contacto Imagen")    
 
     try:
@@ -182,7 +182,7 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
         sb.execute_script(CreateBusinessPartner.SelectAttributes)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Attributes.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Attributes.png')
         raise Exception("Error: Attributes")  
 
     try:      
@@ -200,7 +200,7 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
         sb.execute_script(Global.Accept)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Equipments.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Equipments.png')
         raise Exception("Error: Attributes")  
     
     try:
@@ -218,7 +218,7 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
         sb.execute_script(Global.Accept)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/businesspartner/Contact.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Contact.png')
         raise Exception("Error: Contact")  
 
     try:
@@ -235,7 +235,7 @@ def anado_impuesto_atributos_equipos_contacto_imagen(sb):
         sb.click("#buttonConfirm")
         '''
     except:
-        sb.save_screenshot('screenshot/businesspartner/Image.png')
+        sb.save_screenshot('screenshot/BusinessPartner/Image.png')
         raise Exception("Error: Image")      
     
 #Save
@@ -245,7 +245,7 @@ def guardo_formulario (sb):
         sb.execute_script(Global.SaveAll)
         time.sleep(10)
     except:
-        sb.save_screenshot('screenshot/businesspartner/guardo formulario.png')
+        sb.save_screenshot('screenshot/BusinessPartner/guardo formulario.png')
         raise Exception("Error: guardo formulario")  
         
       
@@ -273,7 +273,7 @@ def busco_el_partner_code_y_edito (sb):
         sb.execute_script(CreateBusinessPartner.EditIBP)
         time.sleep(8)
     except:
-        sb.save_screenshot('screenshot/businesspartner/busco y presiono el boton de editar un business partner.png')
+        sb.save_screenshot('screenshot/BusinessPartner/busco y presiono el boton de editar un business partner.png')
         raise Exception("Error: busco y presiono el boton de editar un business partner")
 
    
@@ -303,5 +303,5 @@ def busco_el_partner_code_y_elimino (sb):
         sb.execute_script(CreateBusinessPartner.ModalDeleteBP)
         time.sleep(10)
     except:
-        sb.save_screenshot('screenshot/businesspartner/busco y presiono el boton de eliminar un business partner')
+        sb.save_screenshot('screenshot/BusinessPartner/busco y presiono el boton de eliminar un business partner')
         raise Exception("Error: busco y presiono el boton de eliminar un business partner")

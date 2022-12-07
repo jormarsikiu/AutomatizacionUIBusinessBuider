@@ -10,5 +10,3 @@ Feature: CreateUser
     |FirstName  |LastName | Avatar     | Email                | Password  | ConfirmPassword | PhoneNumber|
     |Marta      |Perez    | martaperez | martaperez@gmail.com | Pa$$w0rd  | Pa$$w0rd        | 589875234  |
 
-
- 

@@ -1,7 +1,7 @@
-@createsurvey
-Feature: CreateSurvey
+@survey
+Feature: Survey
   
-  Scenario: Crear una Encuesta
+  Scenario Outline: Crear una Encuesta
     Given Abro el menu Panel de Consumo
     And Presiono el boton Survey Administrador y el boton crear encuesta
     When Selecciono el <Tipo> de encuesta y el <Estatus> 
