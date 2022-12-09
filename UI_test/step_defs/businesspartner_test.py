@@ -30,6 +30,7 @@ def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
         sb.get(PAGE)
         getURL = sb.get_current_url()
         sb.assert_true( PAGE + "dashboard/security/index/" in getURL)
+        time.sleep(3)
         sb.execute_script(Global.ButtonBusiness)
         time.sleep(1)
     except:
