@@ -276,6 +276,7 @@ def guardo_formulario (sb):
         time.sleep(10)
         getURL = sb.get_current_url()
         sb.assert_true( PAGE + "Management/BusinessPartner" in getURL)
+        allure_screenshot_success(feature)
     except:
         imageFile = 'screenshot/BusinessPartner/guardo formulario.png'
         sb.save_screenshot(imageFile)
