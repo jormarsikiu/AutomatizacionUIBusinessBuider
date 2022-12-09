@@ -20,7 +20,7 @@ PAGE = Page
 
 # Scenarios 
 scenarios('../features/businesspartner.feature')
-feature = "features/warehouse.feature"
+feature = "features/businesspartner.feature"
 PartnerCode = random.randint(0,1000)
 
 @pytest.fixture
@@ -102,12 +102,13 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(CreateBusinessPartner.ButtonTypeAddress)
         time.sleep(5)
         sb.execute_script(CreateBusinessPartner.ButtonIsDelivery)
+        time.sleep(5)
         sb.type("#pac-input", "Caracas")
-        time.sleep(2)
+        time.sleep(5)
         element = sb.wait_for_element_visible("#pac-input")
-        time.sleep(2)
+        time.sleep(5)
         element.send_keys(Keys.ARROW_DOWN)
-        time.sleep(2)
+        time.sleep(5)
         element.send_keys(Keys.TAB)
         time.sleep(5)
         sb.execute_script(Global.Accept)
@@ -272,6 +273,8 @@ def guardo_formulario (sb):
     try:
         sb.execute_script(Global.SaveAll)
         time.sleep(10)
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "Management/BusinessPartner" in getURL)
     except:
         imageFile = 'screenshot/BusinessPartner/guardo formulario.png'
         sb.save_screenshot(imageFile)
