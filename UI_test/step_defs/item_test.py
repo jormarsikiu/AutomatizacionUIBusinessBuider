@@ -1,6 +1,7 @@
 from pytest_bdd import scenarios, given, when, then, parsers
 from objects.paths import *
 from objects.global_variables import Page
+from objects.allure_screenshot import *
 import time
 from .login import *
 import random
@@ -17,6 +18,7 @@ PAGE = Page
 
 # Scenarios 
 scenarios('../features/item.feature')
+feature = "features/warehouse.feature"
 ItemCode = random.randint(0,1000)
 
 @given('Abro el modulo business')
@@ -28,8 +30,10 @@ def abro_el_modulo_de_security(sb, login_con_cookies_usuario_y_contrasena):
         sb.execute_script(Global.ButtonBusiness)
         time.sleep(3)
     except:
-        sb.save_screenshot('screenshot/Item/Abro el modulo business.png')
-        raise Exception("Error: Abro modulo business")
+        imageFile = 'screenshot/Item/Abro el modulo business.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
+        raise Exception("Error: Abro modulo business") 
 
 @given('presiono el boton items')
 def presiono_el_boton_item(sb):  
@@ -39,7 +43,9 @@ def presiono_el_boton_item(sb):
         sb.assert_true( PAGE + "Management/Item" in getURL)
         time.sleep(8)
     except:
-        sb.save_screenshot('screenshot/Item/presiono el boton items.png')
+        imageFile = 'screenshot/Item/presiono el boton items.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error: presiono el boton items")
 
 @when('presiono el boton de crear item')
@@ -51,7 +57,9 @@ def presiono_el_boton_crear_business_partenr(sb):
         sb.assert_true( PAGE + "Management/Item/_ItemForm" in getURL)
         time.sleep(3)
     except:
-        sb.save_screenshot('screenshot/Item/presiono el boton de crear item.png')
+        imageFile = 'screenshot/Item/presiono el boton de crear item.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error: presiono el boton de crear item")
 
 @when(parsers.parse('cambio los datos del formulario de cliente {Tipo} {Nombre} {NombreCorto} {SKU} {PrecioVenta} {PrecioCosto} {PuntoPedido} {PrecioDescuento} {Capacidad} {Unidad}'))
@@ -81,7 +89,9 @@ def completar_los_datos_de_formulario(sb,Tipo,Nombre, NombreCorto,SKU, PrecioVen
         sb.type("#Unit", Unidad)
         time.sleep(20)
     except:
-        sb.save_screenshot('screenshot/Item/completo los datos del formulario de cliente .png')
+        imageFile = 'screenshot/Item/completo los datos del formulario de cliente .png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error: completo los datos del formulario de cliente ")
 
 @then('selecciono que el producto este Activo En venta Sujeto a impuesto y Favorito')
@@ -102,7 +112,9 @@ def selecciono_activo_enventa_sujetoimpuesto_favorito(sb):
         sb.execute_script(CreateItem.ButtonFeatured)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Item/selecciono que el producto este Activo En venta Sujeto a impuesto y Favorito.png')
+        imageFile = 'screenshot/Item/selecciono que el producto este Activo En venta Sujeto a impuesto y Favorito.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error: selecciono que el producto este Activo En venta Sujeto a impuesto y Favorito")
     
 @then('completo la descripcion imagen grupo lista de precios atributo relacion y almacen')
@@ -116,7 +128,9 @@ def selecciono_descripcions(sb):
         time.sleep(4)
         #sb.find_element('#myDropzone').send_keys('C:/Users/Kaizen/Desktop/ui_businessBuilding/UITestPython/UI_test/step_defs/1.png')
     except:
-        sb.save_screenshot('screenshot/Item/Item Description.png')
+        imageFile = 'screenshot/Item/Item Description.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error: Item Description")
     
     ##Groups
@@ -134,7 +148,9 @@ def selecciono_descripcions(sb):
         sb.execute_script(Global.Accept)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Item/Item Groups')
+        imageFile = 'screenshot/Item/Item Groups.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Groups")
     
     #PriceList
@@ -150,7 +166,9 @@ def selecciono_descripcions(sb):
         sb.execute_script(Global.Accept)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Item/Item PriceList')
+        imageFile = 'screenshot/Item/Item PriceList.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item PriceList")
 
     #Atributes
@@ -162,7 +180,9 @@ def selecciono_descripcions(sb):
         sb.execute_script(CreateItem.SelectAtributes)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Item/Item Atributes')
+        imageFile = 'screenshot/Item/Item Atributes.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Atributes")
     
     #Relations
@@ -181,7 +201,9 @@ def selecciono_descripcions(sb):
         time.sleep(4)
         sb.execute_script(Global.Accept)
     except:
-        sb.save_screenshot('screenshot/Item/Item Relations')
+        imageFile = 'screenshot/Item/Item Relations.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Relations")
     
     #Warehouse
@@ -193,7 +215,9 @@ def selecciono_descripcions(sb):
         sb.execute_script(CreateItem.SelectWarehouse)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Item/Item Warehouse')
+        imageFile = 'screenshot/Item/Item Warehouse.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Warehouse")
     
     
@@ -204,7 +228,9 @@ def guardo_fomulario (sb):
         sb.execute_script(Global.SaveAll)
         time.sleep(10)
     except:
-        sb.save_screenshot('screenshot/Item/Item Save All')
+        imageFile = 'screenshot/Item/Item Save All.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Save All") 
         
 #Busqueda
@@ -232,7 +258,9 @@ def busco_y_presiono_editar_el_producto_y_servicio (sb):
         sb.execute_script(CreateItem.EditItem)
         time.sleep(8)
     except:
-        sb.save_screenshot('screenshot/Item/Item Busqueda')
+        imageFile = 'screenshot/Item/Item Busqueda.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:Item Busqueda")
 
 #Delete
@@ -261,6 +289,9 @@ def busco_y_presiono_eliminar_el_producto_y_servicio (sb):
         time.sleep(8)
         sb.execute_script(CreateItem.ModalDeleteItem)
         time.sleep(10)
+        allure_screenshot_success(feature)
     except:
-        sb.save_screenshot('screenshot/Item/busco y presiono el boton de eliminar un Producto y Servicio')
+        imageFile = 'screenshot/Item/Item busco y presiono el boton de eliminar un Producto y Servicio.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
         raise Exception("Error:busco y presiono el boton de eliminar un Producto y Servicio")

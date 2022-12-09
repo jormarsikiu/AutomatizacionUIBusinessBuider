@@ -2,11 +2,13 @@ from pytest_bdd import scenarios, given, when, then, parsers
 from selenium.webdriver.common.keys import Keys
 from objects.paths import *
 from objects.global_variables import Page
+from objects.allure_screenshot import *
 import random
 import time
 from .login import *
 import os
 import shutil
+
 
 #Carpeta para fotos
 dir = 'screenshot/Warehouse'
@@ -20,6 +22,7 @@ WarehouseCode = random.randint(0,1000)
 
 # Scenarios
 scenarios('../features/warehouse.feature')
+feature = "features/warehouse.feature"
 
 @pytest.fixture
 @given('Abro el modulo business')
@@ -31,8 +34,11 @@ def abro_el_modulo_de_business(sb, login_con_cookies_usuario_y_contrasena):
         sb.execute_script(Global.ButtonBusiness)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Warehouse/Abro el modulo business.png')
-        raise Exception("Error: Abro el modulo business")
+        imageFile = 'screenshot/Warehouse/Abro el modulo business.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_fail(imageFile, feature)
+        raise Exception("Error: Abro el modulo business") 
+        
 
 @given('presiono el boton WareHouse')
 def presiono_el_boton_warehouse(sb):  
@@ -42,7 +48,9 @@ def presiono_el_boton_warehouse(sb):
         sb.assert_true( PAGE + "Management/WareHouse" in getURL)
         time.sleep(3)
     except:
-        sb.save_screenshot('screenshot/Warehouse/presiono el boton WareHouse.png')
+        imageFile = 'screenshot/Warehouse/presiono el boton WareHouse.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: presiono el boton WareHouse")
 
 @when('presiono el boton de crear un WareHouse')
@@ -53,7 +61,9 @@ def presiono_el_boton_crear_warehouse(sb):
         sb.assert_true( PAGE + "Management/Warehouse/Form" in getURL)
         time.sleep(3)
     except:
-        sb.save_screenshot('screenshot/Warehouse/presiono el boton de crear un WareHouse.png')
+        imageFile = 'screenshot/Warehouse/presiono el boton de crear un WareHouse.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: presiono el boton de crear un WareHouse")
 
 @when(parsers.parse('completo los datos del formulario del Almacen {ShortName}'))
@@ -66,7 +76,9 @@ def completo_los_datos_de_formulario(sb,ShortName):
         sb.type("#ShortName", ShortName)
         time.sleep(5)
     except:
-        sb.save_screenshot('screenshot/Warehouse/completo los datos del formulario del Almacen.png')
+        imageFile = 'screenshot/Warehouse/completo los datos del formulario del Almacen.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: completo los datos del formulario del Almacen")
 
 @then('anado la Direccion Grupos Condicion comercial Atributo de entidad')
@@ -91,8 +103,10 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(Global.Accept)
         time.sleep(5)
     except:
-        sb.save_screenshot('screenshot/Warehouse/anado la Direccion .png')
-        raise Exception("Error: anado la Direccion ")
+        imageFile = 'screenshot/Warehouse/anado la Direccion .png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error: anado la Direccion")
     
     try:
         #Groups
@@ -111,8 +125,10 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(Global.Accept)
         time.sleep(4)
     except:
-        sb.save_screenshot('screenshot/Warehouse/anado Grupos .png')
-        raise Exception("Error: anado Grupos ")
+        imageFile = 'screenshot/Warehouse/anado Grupos .png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error:  anado Grupos")
 
     try:
         #Business Condition
@@ -123,8 +139,10 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(CreateWareHouse.SelectBussCond)
         time.sleep(2)
     except:
-        sb.save_screenshot('screenshot/Warehouse/Business Condition.png')
-        raise Exception("Error: Business Condition")
+        imageFile = 'screenshot/Warehouse/Business Condition.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error:  Business Condition")
 
     try:
         #Attributes
@@ -135,8 +153,10 @@ def anado_direccion_contabilidad_grupo_direccioncomercial(sb):
         sb.execute_script(CreateWareHouse.SelectAttributes)
         time.sleep(10)
     except:
-        sb.save_screenshot('screenshot/Warehouse/Attributes.png')
-        raise Exception("Error: Attributes")  
+        imageFile = 'screenshot/Warehouse/Attributes.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error:   Attributes")
 
 #Save
 @then('guardo formulario')
@@ -145,8 +165,10 @@ def guardo_formulario (sb):
         sb.execute_script(Global.SaveAll)
         time.sleep(8)
     except:
-        sb.save_screenshot('screenshot/Warehouse/guardo formulario.png')
-        raise Exception("Error: guardo formulario")  
+        imageFile = 'screenshot/Warehouse/guardo formulario.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error: guardo formulario")
 
 @when('busco y presiono el boton de editar un Almacen')
 def busco_el_partner_code_y_edito (sb): 
@@ -172,7 +194,9 @@ def busco_el_partner_code_y_edito (sb):
         sb.execute_script(CreateWareHouse.EditWarehouse)
         time.sleep(8)
     except:
-        sb.save_screenshot('screenshot/Warehouse/busco y presiono el boton de editar un business partner.png')
+        imageFile = 'screenshot/Warehouse/busco y presiono el boton de editar un business partner.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: busco y presiono el boton de editar un business partner")
 
 
@@ -182,7 +206,9 @@ def cambio_los_datos_de_formulario(sb,ShortName):
         sb.type("#ShortName", ShortName)
         time.sleep(5)
     except:
-        sb.save_screenshot('screenshot/Warehouse/cambio los datos del formulario del Almacen.png')
+        imageFile = 'screenshot/Warehouse/cambio los datos del formulario del Almacen.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: cambio los datos del formulario del Almacen")
 
 @when('busco y presiono el boton de Eliminar un Almacen')
@@ -210,6 +236,9 @@ def busco_el_partner_code_y_edito (sb):
         time.sleep(4)
         sb.execute_script(CreateWareHouse.ModalDeleteWarehouse)
         time.sleep(8)
+        allure_screenshot_success(feature)
     except:
-        sb.save_screenshot('screenshot/Warehouse/busco y presiono el boton de Eliminar un Almacen.png')
-        raise Exception("Error: busco y presiono el boton de Eliminar un Almacen")
+        imageFile = 'screenshot/Warehouse/busco y presiono el boton de Eliminar un Almacen.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
+        raise Exception("Error: busco y presiono el boton de Eliminar un Almacen") 

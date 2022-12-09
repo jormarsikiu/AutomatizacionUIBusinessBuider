@@ -4,6 +4,7 @@ import pytest
 import time
 import os
 import shutil
+from objects.allure_screenshot import *
 
 #Carpeta para fotos
 dir = 'screenshot/login'
@@ -33,6 +34,9 @@ def login_con_cookies_usuario_y_contrasena(sb):
         #Cambia el idioma
         sb.execute_script(Login.ButtonFlag)
         sb.execute_script(Login.ButtonSpanishFlag)
+
     except:
-        sb.save_screenshot('screenshot/login/login con cookies usuario y contrasena.png')
+        imageFile = 'screenshot/login/login con cookies usuario y contrasena.png'
+        sb.save_screenshot(imageFile)
+        allure_screenshot_only_fail(imageFile)
         raise Exception("Error: login con cookies usuario y contrasena") 
