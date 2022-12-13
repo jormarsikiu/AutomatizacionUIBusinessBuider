@@ -34,7 +34,7 @@ class CreateUser():
 
 class CreateBusinessPartner():
     ButtonBusinessPartner = '''window.location.href='/Management/BusinessPartner';'''
-              #checar boton '''document.querySelectorAll("[href*='/Management/BusinessPartner']")[0].click();'''
+    #checar boton '''document.querySelectorAll("[href*='/Management/BusinessPartner']")[0].click();'''
     ButtonBusinessPartnerCreate = '''document.querySelectorAll("[href*='/Management/BusinessPartner/Form']")[0].click();'''
     SelectClientTypeOpen= '''jQuery('#EntityTypeCode').select2('open')'''
     SelectClientType= '''jQuery('#select2-EntityTypeCode-results li').first().trigger({type:'mouseup'})'''

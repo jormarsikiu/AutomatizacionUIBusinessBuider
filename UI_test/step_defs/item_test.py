@@ -18,7 +18,7 @@ PAGE = Page
 
 # Scenarios 
 scenarios('../features/item.feature')
-feature = "features/warehouse.feature"
+feature = "features/item.feature"
 ItemCode = random.randint(0,1000)
 
 @given('Abro el modulo business')
@@ -227,6 +227,7 @@ def guardo_fomulario (sb):
     try:
         sb.execute_script(Global.SaveAll)
         time.sleep(10)
+        allure_screenshot_success(feature)
     except:
         imageFile = 'screenshot/Item/Item Save All.png'
         sb.save_screenshot(imageFile)

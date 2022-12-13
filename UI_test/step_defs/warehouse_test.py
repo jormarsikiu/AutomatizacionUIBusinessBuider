@@ -164,6 +164,7 @@ def guardo_formulario (sb):
     try:
         sb.execute_script(Global.SaveAll)
         time.sleep(8)
+        allure_screenshot_success(feature)
     except:
         imageFile = 'screenshot/Warehouse/guardo formulario.png'
         sb.save_screenshot(imageFile)
