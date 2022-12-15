@@ -39,10 +39,15 @@ def abro_el_menu_oanel_consumo(sb, login_con_cookies_usuario_y_contrasena):
 @given('Presiono el boton Survey Administrador y el boton crear encuesta')
 def presiono_el_boton_crear_survey_y_crear(sb):
     try:
+        sb.execute_script(CreateSurvey.ButtonMenuSurveyAdministrator)
+        time.sleep(3) 
         getURL = sb.get_current_url()
-        sb.assert_true( PAGE + "HumanTalent/Survey" in getURL)
+        sb.assert_true( PAGE + "HumanTalent/Survey/SurveyAdmin" in getURL)
         time.sleep(3) 
         sb.execute_script(CreateSurvey.ButtonMenuCrearSurvey)
+        time.sleep(5) 
+        getURL = sb.get_current_url()
+        sb.assert_true( PAGE + "HumanTalent/Survey/CreateSurvey" in getURL)
         time.sleep(3) 
     except:
         imageFile = 'screenshot/BusinessPartner/Presiono el boton Survey Administrador y el boton crear encuesta.png'
@@ -59,17 +64,15 @@ def selecciono_tipo_y_estatus(sb,Tipo,Estatus):
             sb.execute_script(CreateSurvey.Select360Survey)
             sb.execute_script(CreateSurvey.SelectStatus)
             sb.execute_script(CreateSurvey.SelectOpenStatus)
-            time.sleep(5) 
         elif Tipo == 'Form-Survey' and Estatus == 'Open':
             sb.execute_script(CreateSurvey.SelectFormSurvey)
             sb.execute_script(CreateSurvey.SelectStatus)
             sb.execute_script(CreateSurvey.SelectOpenStatus)
-            time.sleep(5) 
         elif Tipo == 'Personal-Reference' and Estatus == 'Open': 
             sb.execute_script(CreateSurvey.SelectReferenceSurvey)
             sb.execute_script(CreateSurvey.SelectStatus)
             sb.execute_script(CreateSurvey.SelectOpenStatus)    
-            time.sleep(5) 
+            time.sleep(1)         
     except:
         imageFile = 'screenshot/Survey/Selecciono el Tipo de encuesta y el Estatus.png'
         sb.save_screenshot(imageFile)
