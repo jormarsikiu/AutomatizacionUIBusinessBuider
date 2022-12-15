@@ -40,12 +40,9 @@ def abro_el_menu_oanel_consumo(sb, login_con_cookies_usuario_y_contrasena):
 def presiono_el_boton_crear_survey_y_crear(sb):
     try:
         getURL = sb.get_current_url()
-        sb.assert_true( PAGE + "HumanTalent/Survey/SurveyAdmin" in getURL)
+        sb.assert_true( PAGE + "HumanTalent/Survey" in getURL)
         time.sleep(3) 
         sb.execute_script(CreateSurvey.ButtonMenuCrearSurvey)
-        time.sleep(5) 
-        getURL = sb.get_current_url()
-        sb.assert_true( PAGE + "HumanTalent/Survey/CreateSurvey" in getURL)
         time.sleep(3) 
     except:
         imageFile = 'screenshot/BusinessPartner/Presiono el boton Survey Administrador y el boton crear encuesta.png'
