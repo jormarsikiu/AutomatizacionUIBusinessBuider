@@ -198,6 +198,7 @@ class CreateGroup():
     SelectOpenFatherCode = '''jQuery('#ListParents').select2('open')'''
     SelectFatherCode = '''jQuery('#select2-ListParents-results li').last().trigger({type:'mouseup'})'''
     DeleteGroup = '''document.querySelectorAll("[href*='/Settings/EntityGroup/DeleteGroupFormAsync']")[0].click();'''
+    
 
 class CreateWareHouse():
     ButtonWarehouse = '''document.querySelectorAll("[href*='/Management/WareHouse']")[0].click();'''
@@ -228,4 +229,17 @@ class CreateWareHouse():
     #Delete
     DeleteWarehouse = '''document.querySelectorAll("[href*='/Management/Warehouse/Delete']")[0].click();'''
     ModalDeleteWarehouse = '''document.querySelectorAll(".btn.btn-outline-success")[0].click();'''
-    
+
+class CreateTaxlist ():
+    ButtonTaxlist = '''document.querySelectorAll("[href*='/Management/Tax']")[0].click();'''
+    ButtonCreateTaxlist = '''document.querySelectorAll("[href*='/Management/Tax/Form']")[0].click();'''
+    SelectClientTypeEntityOpen = '''jQuery('#EntityTypeCode').select2('open')'''
+    SelectClientTypeEntity = '''jQuery('#select2-EntityTypeCode-results li').first().trigger({type:'mouseup'})'''
+    SelectParentCodeOpen = '''jQuery('#ParentCode').select2('open')'''
+    SelectParentCode = '''jQuery('#select2-ParentCode-results li').first().trigger({type:'mouseup'})'''
+    ButtonMenuNext = '''document.querySelectorAll('[href*="#next"]')[0].click();'''
+    AcceptValue = '''document.querySelectorAll(".btn.btn-sm.btn-primary.text-white")[0].click();'''
+    ButtonFinishform = '''document.querySelectorAll('[href*="#finish"]')[0].click();'''
+    EditTax = '''document.querySelectorAll("[href*='/Management/Tax/Form?code']")[0].click();'''
+    DeleteTax = '''document.querySelectorAll("[href*='/Management/Tax/Delete']")[0].click();'''
+    ModalDeleteTax = '''document.querySelectorAll(".btn.btn-outline-success")[0].click();'''
