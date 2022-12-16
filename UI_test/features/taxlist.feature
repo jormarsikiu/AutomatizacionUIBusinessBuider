@@ -26,7 +26,6 @@ Feature: taxlist
     |Name        | ShortName    |
     |UITest-edit | Pytest-edit  | 
 
-
   Scenario Outline: Eliminar un Impuesto
     Given Abro el modulo business
     And presiono el boton Impuesto
