@@ -7,5 +7,3 @@ Feature: PriceList
     And completo los datos del primer formulario <Name> <ShortName> <LowerLimit> <UpperLimit>
     Then añado el valor del impuesto
     Then guardo formulario
-
-

@@ -10,6 +10,7 @@ from objects.allure_screenshot import *
 dir = 'screenshot/login'
 if os.path.exists(dir):
     shutil.rmtree(dir)
+os.makedirs(dir)
 
 PAGE = Page
 
